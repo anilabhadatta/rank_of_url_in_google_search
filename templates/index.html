@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Google Search Keyword Rank</title>
+    </head>
+
+    <style type="text/css">
+        th:tr {
+            color: blue;
+        }
+        tr:nth-of-type(2n) {
+            border: 1px solid black;
+            background-color: rgba(150, 150, 150, 0.5);
+        }
+        td {
+            padding: 8px 8px;
+            border: 1px solid black;
+        }
+    </style>
+    <h1>Rank of Keyword in Google Search Engine</h1>
+    {% if not condition %}
+        <body>
+            <form action="/result/" method="POST" enctype="multipart/form-data">
+                <div>
+                    <label>Select Excel File</label>
+                    <input type="file" name="file"/>
+                    <input type = "submit" value="Submit">
+                </div>
+            </form>
+        </body>
+    {% endif %}
+    {% if condition %}
+        <h3>Result Table</h3>
+        <body>
+            
+                <table style="margin-left: 20px;">
+                    <!-- Table headers -->
+                    <th>
+                        <tr style="color: green; ">
+                            <td>Keyword</td>
+                            <td>Website</td>
+                            <td>Rank</td>
+                        </tr>
+                    </th>
+            
+                    <!-- For loop logic of jinja template -->
+                    {%for i in range(0, len)%}
+                    
+                    <!-- table rows -->
+                    <tr>
+                        <td>{{keyword_list[i]}}</td>
+                        <td>{{webpage_list[i]}}</td>
+                        <td>{{rank_list[i]}}</td>
+                        {%endfor%}
+                    </tr>         
+                </table>
+            <br>
+            <input type="button" value="Go Back" onclick="history.back(-1)" />
+        </body>
+    {% endif %}
+</html>
